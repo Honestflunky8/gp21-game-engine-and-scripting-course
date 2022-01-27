@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckLenght: 0.64
+  groundCheckRadius: 0.45
   groundLayers:
     serializedVersion: 2
-    m_Bits: 0
-  groundCheckRadius: 0.45
+    m_Bits: 256
