@@ -6,16 +6,17 @@ public class PlayerQuickJump : MonoBehaviour
 {
     [SerializeField] float jumpHeight = 5;
     Rigidbody _rigidbody;
+    PlayerInputs _playerInputs;
     
     void Awake(){
         _rigidbody = GetComponent<Rigidbody>();
+        _playerInputs = GetComponent<PlayerInputs>();
     }
 
     void Update(){
-        //Get jump input
-        var jumpInput = Input.GetKeyDown(KeyCode.Space);
+        
         //Jump
-        if (jumpInput && _rigidbody.velocity.y < 0.5 && _rigidbody.velocity.y !< 0){
+        if (_playerInputs.JumpInput && _rigidbody.velocity.y < 0.5){
             _rigidbody.AddForce(Vector3.up * jumpHeight);
         }
     }
