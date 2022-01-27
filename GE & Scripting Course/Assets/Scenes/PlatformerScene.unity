@@ -164,7 +164,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3933426067228819101, guid: ffa6d895852107844a74771d2a23f73f, type: 3}
   m_PrefabInstance: {fileID: 3933426067030692081}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &214904434
+--- !u!114 &214904435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,12 +173,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 214904428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fc65a8ffd843948b0cfa9ca69e4966, type: 3}
+  m_Script: {fileID: 11500000, guid: b6dd7f4ce4ba7444cae29c0c02257ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 100
+--- !u!114 &214904436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214904428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3928e5c2c097274bbe0c4253b49d9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  maxMoveSpeed: 10
-  jumpHeight: 1000
 --- !u!1001 &235620050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -865,5 +876,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3933426067228819102, guid: ffa6d895852107844a74771d2a23f73f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1058cce23ae91ef4a94b6cf7288280e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa6d895852107844a74771d2a23f73f, type: 3}
