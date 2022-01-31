@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerWalking : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5;
+    [SerializeField] public float moveSpeed = 5;
     [SerializeField] float chargingMoveSpeedFactor = 0.5f;
     Rigidbody _rigidbody;
-    PlayerInputs _playerInputs;
+    CommandContainer _commandContainer;
     GroundChecker _groundChecker;
 
     
@@ -15,7 +15,7 @@ public class PlayerWalking : MonoBehaviour
 
     void Awake(){
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInputs = GetComponent<PlayerInputs>();
+        _commandContainer = GetComponentInChildren<CommandContainer>();
         _groundChecker = GetComponent<GroundChecker>();
         
     }
@@ -24,12 +24,12 @@ public class PlayerWalking : MonoBehaviour
 
        var currentMoveSpeed = moveSpeed;
 
-        if (_playerInputs.JumpInput && _groundChecker.IsGrounded){
+        if (_commandContainer.jumpCommand && _groundChecker.IsGrounded){
             currentMoveSpeed *= chargingMoveSpeedFactor;
         }
         //Set move Velocity
         var velocity = _rigidbody.velocity;
-        velocity = new Vector3(_playerInputs.MoveInput * currentMoveSpeed, velocity.y, 0);
+        velocity = new Vector3(_commandContainer.moveCommand * currentMoveSpeed, velocity.y, 0);
         _rigidbody.velocity = velocity;
         
     }

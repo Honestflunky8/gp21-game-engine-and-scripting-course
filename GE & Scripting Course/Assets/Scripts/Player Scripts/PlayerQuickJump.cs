@@ -7,11 +7,11 @@ public class PlayerQuickJump : MonoBehaviour
     [SerializeField] float jumpHeight = 5;
     [SerializeField] GroundChecker _groundChecker;
     Rigidbody _rigidbody;
-    PlayerInputs _playerInputs;
+    CommandContainer _commandContainer;
     
     void Awake(){
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInputs = GetComponent<PlayerInputs>();
+        _commandContainer = GetComponentInChildren<CommandContainer>();
         if (GetComponent<GroundChecker>() != null){
             _groundChecker = GetComponent<GroundChecker>();
         }
@@ -20,7 +20,7 @@ public class PlayerQuickJump : MonoBehaviour
     void Update(){
         
         //Jump
-        if (_playerInputs.JumpInput && _groundChecker.IsGrounded){
+        if (_commandContainer.jumpCommand && _groundChecker.IsGrounded){
             _rigidbody.AddForce(Vector3.up * jumpHeight);
         }
     }

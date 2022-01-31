@@ -11,29 +11,33 @@ public class PlayerChargeJump : MonoBehaviour
     
     float jumpCharge;
     Rigidbody _rigidbody;
-    PlayerInputs _playerInputs;
+    CommandContainer _commandContainer;
     
     void Awake(){
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInputs = GetComponent<PlayerInputs>();
+        _commandContainer = GetComponentInChildren<CommandContainer>();
         if (GetComponent<GroundChecker>() != null){
             _groundChecker = GetComponent<GroundChecker>();
         }
     }
 
     void Update(){
-        
-        //Jump
-        if (_playerInputs.JumpInput){
+        //Charge Jump
+        if (_commandContainer.jumpCommand){
             jumpCharge += Time.deltaTime / chargeTime;
         }
 
-        if (_playerInputs.JumpInputUp){
-            if (_groundChecker.IsGrounded){
-                var jumpForce = Mathf.Lerp(minJumpHeight, maxJumpHeight, jumpCharge);
-                _rigidbody.AddForce(Vector3.up * jumpForce);
-            }
-            jumpCharge = 0f;
+        if (_commandContainer.jumpCommandUp){
+            Jump();
         }
+    }
+
+    void Jump(){
+        if (_groundChecker.IsGrounded){
+            var jumpForce = Mathf.Lerp(minJumpHeight, maxJumpHeight, jumpCharge);
+            _rigidbody.AddForce(Vector3.up * jumpForce);
+        }
+
+        jumpCharge = 0f;
     }
 }
